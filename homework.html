@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>School Homework System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 10px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+h2 { text-align: center; }
+
+.class select {
+    width: 40%;
+    padding: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 7px;
+    margin: 5px 0;
+}
+
+button {
+    padding: 8px;
+    width: 100%;
+    background: #2a7bff;
+    color: white;
+    border: none;
+    margin-top: 5px;
+}
+
+.row {
+    display: flex;
+    border-bottom: 1px solid #000;
+}
+
+.left {
+    width: 20%;
+    border-right: 1px solid #000;
+    padding: 6px;
+    font-weight: bold;
+}
+
+.right {
+    width: 70%;
+    padding: 6px;
+}
+
+.right1 {
+    width: 70%;
+    padding: 6px;
+    font-weight: bold;
+}
+
+#sheet {
+    background: #fff;
+    border: 2px solid #000;
+    margin-top: 10px;
+}
+
+.top {
+    background: #b5f733;
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    border-bottom: 2px solid #000;
+}
+
+.classline {
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    padding: 5px;
+}
+
+img {
+    max-width: 90%;
+    margin-top: 3px;
+}
+
+@media(max-width:600px){
+    .left { width:40%; }
+    .right,.right1 { width:60%; }
+    input { width:100%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2><b>Homework Entry</b></h2>
+
+<div class="class">
+Class:
+<select id="classSel" onchange="loadClass()">
+<option>I</option><option>II</option><option>III</option>
+<option>IV</option><option>V</option><option>VI</option>
+<option>VII</option><option>VIII</option>
+<option>IX</option><option>X</option>
+</select>
+</div>
+
+<br>
+Date:
+<input id="date"><br><br>
+
+<b>Subjects (Add / Delete)</b><br>
+<input id="newSubject" placeholder="Enter subject name">
+<button onclick="addSubject()">Add Subject</button>
+<button onclick="deleteSubject()">Delete Subject</button>
+
+<br><br>
+
+<div id="inputs"></div>
+
+<button onclick="download()">Download Sheet</button>
+
+<div id="sheet">
+<div class="top">IRVINE ADVENTIST ENGLISH SCHOOL BASBARI</div>
+<div class="classline">CLASS - <span id="c"></span></div>
+
+<div class="row">
+<div class="left">Date</div>
+<div class="right1" id="d"></div>
+</div>
+
+<div class="row">
+<div class="left">SUBJECT</div>
+<div class="right1">HOMEWORK</div>
+</div>
+
+<div id="sheetRows"></div>
+</div>
+
+</div>
+
+<script>
+let subjects = JSON.parse(localStorage.getItem("subjects")) ||
+["MORAL","ENGLISH","MATHS","SCIENCE","HINDI","COMPUTER"];
+
+const inputs=document.getElementById("inputs");
+const rows=document.getElementById("sheetRows");
+
+function saveSubjects(){
+localStorage.setItem("subjects",JSON.stringify(subjects));
+}
+
+function renderSubjects(){
+inputs.innerHTML="";
+rows.innerHTML="";
+
+subjects.forEach(s=>{
+inputs.innerHTML+=`
+<div><b>${s}</b>
+<input id="t_${s}" oninput="saveData()">
+<input type="file" onchange="loadImg(event,'${s}')">
+</div><br>`;
+
+rows.innerHTML+=`
+<div class="row">
+<div class="left">${s}</div>
+<div class="right">
+<div id="s_${s}"></div>
+<img id="i_${s}">
+</div>
+</div>`;
+});
+}
+
+function addSubject(){
+let s=newSubject.value.trim().toUpperCase();
+if(!s)return alert("Enter subject");
+if(subjects.includes(s))return alert("Already exists");
+subjects.push(s);
+saveSubjects();
+renderSubjects();
+newSubject.value="";
+}
+
+function deleteSubject(){
+let s=newSubject.value.trim().toUpperCase();
+if(!subjects.includes(s))return alert("Subject not found");
+subjects=subjects.filter(x=>x!==s);
+saveSubjects();
+renderSubjects();
+}
+
+function key(){
+return "class_"+classSel.value+"_"+date.value;
+}
+
+function saveData(){
+let data={};
+subjects.forEach(s=>{
+data[s]={
+text:document.getElementById("t_"+s).value,
+img:document.getElementById("i_"+s).src||""
+};
+document.getElementById("s_"+s).innerText=data[s].text;
+});
+localStorage.setItem(key(),JSON.stringify(data));
+}
+
+function loadClass(){
+c.innerText=classSel.value;
+d.innerText=date.value;
+renderSubjects();
+
+let data=localStorage.getItem(key());
+if(data){
+data=JSON.parse(data);
+subjects.forEach(s=>{
+if(data[s]){
+document.getElementById("t_"+s).value=data[s].text;
+document.getElementById("s_"+s).innerText=data[s].text;
+document.getElementById("i_"+s).src=data[s].img;
+}
+});
+}
+}
+
+function loadImg(e,s){
+let r=new FileReader();
+r.onload=()=>{
+document.getElementById("i_"+s).src=r.result;
+saveData();
+}
+r.readAsDataURL(e.target.files[0]);
+}
+
+function download(){
+html2canvas(document.getElementById("sheet"),{scale:2}).then(c=>{
+let a=document.createElement("a");
+a.download="homework.png";
+a.href=c.toDataURL();
+a.click();
+});
+}
+
+let t=new Date();
+date.value=t.getDate().toString().padStart(2,'0')+"/"
++(t.getMonth()+1).toString().padStart(2,'0')+"/"
++t.getFullYear();
+
+renderSubjects();
+loadClass();
+</script>
+
+</body>
+</html>
