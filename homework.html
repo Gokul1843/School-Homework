@@ -149,7 +149,7 @@
         <div id="inputs"></div>
 
         <button onclick="download()">Download Sheet</button>
-
+        <button onclick="shareTable()">Share Table on WhatsApp</button>
         <div id="sheet">
             <div class="top">IRVINE ADVENTIST ENGLISH SCHOOL BASBARI</div>
             <div class="classline">CLASS - <span id="c"></span></div>
@@ -295,7 +295,35 @@
                 a.click();
             });
         }
+async function shareTable() {
 
+const sheet = document.getElementById("sheet");
+
+const canvas = await html2canvas(sheet,{scale:2});
+
+canvas.toBlob(async (blob) => {
+
+const file = new File([blob], "homework.png", {
+type: "image/png"
+});
+
+if (navigator.canShare && navigator.canShare({ files: [file] })) {
+
+await navigator.share({
+files: [file],
+title: "Homework",
+text: "Today's Homework"
+});
+
+} else {
+
+alert("Sharing not supported on this device");
+
+}
+
+});
+
+}
         let t = new Date();
         date.value = t.getDate().toString().padStart(2, '0') + "/"
             + (t.getMonth() + 1).toString().padStart(2, '0') + "/"
