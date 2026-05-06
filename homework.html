@@ -1,176 +1,197 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>School Homework System</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <meta charset="UTF-8">
+    <title>School Homework System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
-<style>
-body {
-    font-family: 'Segoe UI', Tahoma;
-    background: #f0f0f0;
-    margin: 0;
-    padding: 10px;
-}
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+        }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-}
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
 
-h2 { text-align: center; }
+        h2 {
+            text-align: center;
+        }
 
-.class select {
-    width: 40%;
-    padding: 10px;
-}
+        .class select {
+            width: 40%;
+            padding: 10px;
+        }
 
-input {
-    width: 90%;
-    padding: 7px;
-    margin: 5px 0;
-}
+        input {
+            width: 90%;
+            padding: 7px;
+            margin: 5px 0;
+        }
 
-button {
-    padding: 8px;
-    width: 100%;
-    background: #2a7bff;
-    color: white;
-    border: none;
-    margin-top: 5px;
-}
+        button {
+            padding: 8px;
+            width: 100%;
+            background: #2a7bff;
+            color: white;
+            border: none;
+            margin-top: 5px;
+        }
 
-.row {
-    display: flex;
-    border-bottom: 1px solid #000;
-}
+        .row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
 
-.left {
-    width: 20%;
-    border-right: 1px solid #000;
-    padding: 6px;
-    font-weight: bold;
-}
+        .left {
+            width: 20%;
+            border-right: 1px solid #000;
+            padding: 6px;
+            font-weight: bold;
+        }
 
-.right {
-    width: 70%;
-    padding: 6px;
-}
+        .right {
+            width: 70%;
+            padding: 6px;
+        }
 
-.right1 {
-    width: 70%;
-    padding: 6px;
-    font-weight: bold;
-}
+        .right1 {
+            width: 70%;
+            padding: 6px;
+            font-weight: bold;
+        }
 
-#sheet {
-    background: #fff;
-    border: 2px solid #000;
-    margin-top: 10px;
-}
+        #sheet {
+            background: #fff;
+            border: 2px solid #000;
+            margin-top: 10px;
+        }
 
-.top {
-    background: #b5f733;
-    text-align: center;
-    font-weight: bold;
-    padding: 8px;
-    border-bottom: 2px solid #000;
-}
+        .top {
+            background: #b5f733;
+            text-align: center;
+            font-weight: bold;
+            padding: 8px;
+            border-bottom: 2px solid #000;
+        }
 
-.classline {
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 2px solid #000;
-    padding: 5px;
-}
+        .classline {
+            text-align: center;
+            font-weight: bolder;
+            border-bottom: 2px solid #000;
+            padding: 5px;
+        }
 
-img {
-    max-width: 90%;
-    margin-top: 3px;
-}
+        img {
+            max-width: 90%;
+            margin-top: 3px;
+        }
 
-@media(max-width:600px){
-    .left { width:40%; }
-    .right,.right1 { width:60%; }
-    input { width:100%; }
-}
-</style>
+        @media(max-width:600px) {
+            .left {
+                width: 40%;
+            }
+
+            .right,
+            .right1 {
+                width: 60%;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h2><b>Homework Entry</b></h2>
+        <h2><b>Homework Entry</b></h2>
 
-<div class="class">
-Class:
-<select id="classSel" onchange="loadClass()">
-<option>I</option><option>II</option><option>III</option>
-<option>IV</option><option>V</option><option>VI</option>
-<option>VII</option><option>VIII</option>
-<option>IX</option><option>X</option>
-</select>
-</div>
+        <div class="class">
+            Class:
+            <select id="classSel" onchange="loadClass()">
+                <option>NURSERY</option>
+                <option>LKG</option>
+                <option>UKG</option>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+                <option>VIII</option>
+                <option>IX</option>
+                <option>X</option>
+            </select>
+        </div>
 
-<br>
-Date:
-<input id="date"><br><br>
+        <br>
+        Date:
+        <input id="date"><br><br>
 
-<b>Subjects (Add / Delete)</b><br>
-<input id="newSubject" placeholder="Enter subject name">
-<button onclick="addSubject()">Add Subject</button>
-<button onclick="deleteSubject()">Delete Subject</button>
+        <b>Subjects (Add / Delete)</b><br>
+        <input id="newSubject" placeholder="Enter subject name">
+        <button onclick="addSubject()">Add Subject</button>
+        <button onclick="deleteSubject()">Delete Subject</button>
 
-<br><br>
+        <br><br>
 
-<div id="inputs"></div>
+        <div id="inputs"></div>
 
-<button onclick="download()">Download Sheet</button>
+        <button onclick="download()">Download Sheet</button>
 
-<div id="sheet">
-<div class="top">IRVINE ADVENTIST ENGLISH SCHOOL BASBARI</div>
-<div class="classline">CLASS - <span id="c"></span></div>
+        <div id="sheet">
+            <div class="top">IRVINE ADVENTIST ENGLISH SCHOOL BASBARI</div>
+            <div class="classline">CLASS - <span id="c"></span></div>
 
-<div class="row">
-<div class="left">Date</div>
-<div class="right1" id="d"></div>
-</div>
+            <div class="row">
+                <div class="left">Date</div>
+                <div class="right1" id="d"></div>
+            </div>
 
-<div class="row">
-<div class="left">SUBJECT</div>
-<div class="right1">HOMEWORK</div>
-</div>
+            <div class="row">
+                <div class="left">SUBJECT</div>
+                <div class="right1">HOMEWORK</div>
+            </div>
 
-<div id="sheetRows"></div>
-</div>
+            <div id="sheetRows"></div>
+        </div>
 
-</div>
+    </div>
 
-<script>
-let subjects = JSON.parse(localStorage.getItem("subjects")) ||
-["MORAL","ENGLISH","MATHS","SCIENCE","HINDI","COMPUTER"];
+    <script>
+        let subjects = JSON.parse(localStorage.getItem("subjects")) ||
+            ["MORAL", "ENGLISH", "MATHS", "SCIENCE", "HINDI", "COMPUTER"];
 
-const inputs=document.getElementById("inputs");
-const rows=document.getElementById("sheetRows");
+        const inputs = document.getElementById("inputs");
+        const rows = document.getElementById("sheetRows");
 
-function saveSubjects(){
-localStorage.setItem("subjects",JSON.stringify(subjects));
-}
+        function saveSubjects() {
+            localStorage.setItem("subjects", JSON.stringify(subjects));
+        }
 
-function renderSubjects(){
-inputs.innerHTML="";
-rows.innerHTML="";
+        function renderSubjects() {
+            inputs.innerHTML = "";
+            rows.innerHTML = "";
 
-subjects.forEach(s=>{
-inputs.innerHTML+=`
+            subjects.forEach(s => {
+                inputs.innerHTML += `
 <div><b>${s}</b>
 <input id="t_${s}" oninput="saveData()">
 <input type="file" onchange="loadImg(event,'${s}')">
 </div><br>`;
 
-rows.innerHTML+=`
+                rows.innerHTML += `
 <div class="row">
 <div class="left">${s}</div>
 <div class="right">
@@ -178,87 +199,166 @@ rows.innerHTML+=`
 <img id="i_${s}">
 </div>
 </div>`;
-});
-}
+            });
+        }
 
-function addSubject(){
-let s=newSubject.value.trim().toUpperCase();
-if(!s)return alert("Enter subject");
-if(subjects.includes(s))return alert("Already exists");
-subjects.push(s);
-saveSubjects();
-renderSubjects();
-newSubject.value="";
-}
+        function addSubject() {
+            let s = newSubject.value.trim().toUpperCase();
+            if (!s) return alert("Enter subject");
+            if (subjects.includes(s)) return alert("Already exists");
+            subjects.push(s);
+            saveSubjects();
+            renderSubjects();
+            newSubject.value = "";
+        }
 
-function deleteSubject(){
-let s=newSubject.value.trim().toUpperCase();
-if(!subjects.includes(s))return alert("Subject not found");
-subjects=subjects.filter(x=>x!==s);
-saveSubjects();
-renderSubjects();
-}
+        function deleteSubject() {
+            let s = newSubject.value.trim().toUpperCase();
+            if (!subjects.includes(s)) return alert("Subject not found");
+            subjects = subjects.filter(x => x !== s);
+            saveSubjects();
+            renderSubjects();
+        }
 
-function key(){
-return "class_"+classSel.value+"_"+date.value;
-}
+        function key() {
+            return "class_" + classSel.value + "_" + date.value;
+        }
 
-function saveData(){
-let data={};
-subjects.forEach(s=>{
-data[s]={
-text:document.getElementById("t_"+s).value,
-img:document.getElementById("i_"+s).src||""
-};
-document.getElementById("s_"+s).innerText=data[s].text;
-});
-localStorage.setItem(key(),JSON.stringify(data));
-}
+        function saveData() {
 
-function loadClass(){
-c.innerText=classSel.value;
-d.innerText=date.value;
-renderSubjects();
+            let data = {};
 
-let data=localStorage.getItem(key());
-if(data){
-data=JSON.parse(data);
-subjects.forEach(s=>{
-if(data[s]){
-document.getElementById("t_"+s).value=data[s].text;
-document.getElementById("s_"+s).innerText=data[s].text;
-document.getElementById("i_"+s).src=data[s].img;
-}
-});
-}
-}
+            subjects.forEach(s => {
 
-function loadImg(e,s){
-let r=new FileReader();
-r.onload=()=>{
-document.getElementById("i_"+s).src=r.result;
-saveData();
-}
-r.readAsDataURL(e.target.files[0]);
-}
+                data[s] = {
 
-function download(){
-html2canvas(document.getElementById("sheet"),{scale:2}).then(c=>{
-let a=document.createElement("a");
-a.download="homework.png";
-a.href=c.toDataURL();
-a.click();
-});
-}
+                    text: document.getElementById("t_" + s).value,
 
-let t=new Date();
-date.value=t.getDate().toString().padStart(2,'0')+"/"
-+(t.getMonth()+1).toString().padStart(2,'0')+"/"
-+t.getFullYear();
+                    img: document.getElementById("i_" + s).src || ""
 
-renderSubjects();
-loadClass();
-</script>
+                };
 
+                document.getElementById("s_" + s).innerText = data[s].text;
+
+            });
+
+            saveOnline(key(), data);
+            console.log("Saved Online");
+        }
+
+
+
+        async function loadClass() {
+
+            c.innerText = classSel.value;
+
+            d.innerText = date.value;
+
+           
+
+            let data = await loadOnline(key());
+
+            if (data) {
+
+                subjects.forEach(s => {
+
+                    if (data[s]) {
+
+                        document.getElementById("t_" + s).value = data[s].text;
+
+                        document.getElementById("s_" + s).innerText = data[s].text;
+
+                        document.getElementById("i_" + s).src = data[s].img;
+
+                    }
+
+                });
+
+            }
+
+        }
+
+        function loadImg(e, s) {
+            let r = new FileReader();
+            r.onload = () => {
+                document.getElementById("i_" + s).src = r.result;
+                saveData();
+            }
+            r.readAsDataURL(e.target.files[0]);
+        }
+
+        function download() {
+            html2canvas(document.getElementById("sheet"), { scale: 2 }).then(c => {
+                let a = document.createElement("a");
+                a.download = "homework.png";
+                a.href = c.toDataURL();
+                a.click();
+            });
+        }
+
+        let t = new Date();
+        date.value = t.getDate().toString().padStart(2, '0') + "/"
+            + (t.getMonth() + 1).toString().padStart(2, '0') + "/"
+            + t.getFullYear();
+
+
+    </script>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+        import {
+            getDatabase,
+            ref,
+            set,
+            get,
+            child
+        }
+            from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBa5yGYP46YyEfRv_I7_0t1WBABDMF-qvs",
+            authDomain: "homework-12913.firebaseapp.com",
+            databaseURL: "https://homework-12913-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "homework-12913",
+            storageBucket: "homework-12913.firebasestorage.app",
+            messagingSenderId: "580315928567",
+            appId: "1:580315928567:web:2bd7144ad8f4724874c0f2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        const db = getDatabase(app);
+
+        window.saveOnline = async function (dataKey, data) {
+
+            await set(ref(db, "homework/" + dataKey), data);
+
+        }
+
+        window.loadOnline = async function (dataKey) {
+
+            const snapshot = await get(child(ref(db), "homework/" + dataKey));
+
+            if (snapshot.exists()) {
+
+                return snapshot.val();
+
+            }
+
+            return null;
+
+        }
+
+        window.onload = () => {
+
+            renderSubjects();
+
+            loadClass();
+
+        }
+
+    </script>
 </body>
+
 </html>
