@@ -285,7 +285,13 @@ textarea{
             }
 
         }
+function autoGrow(el){
 
+el.style.height = "40px";
+
+el.style.height = el.scrollHeight + "px";
+
+}
         function loadImg(e, s) {
             let r = new FileReader();
             r.onload = () => {
