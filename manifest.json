@@ -1,7 +1,7 @@
 {
   "name": "Homework App",
   "short_name": "Homework",
-  "start_url": "./homework.html",
+"start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2a7bff",
