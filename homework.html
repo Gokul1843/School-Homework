@@ -38,8 +38,9 @@ textarea{
     width: 90%;
     padding: 7px;
     margin: 5px 0;
-    min-height: 60px;
-    resize: vertical;
+    min-height: 40px;
+    resize: none;
+    overflow: hidden;
 }
         button {
             padding: 8px;
@@ -194,7 +195,7 @@ textarea{
             subjects.forEach(s => {
                 inputs.innerHTML += `
 <div><b>${s}</b>
-<textarea id="t_${s}" oninput="saveData()"></textarea>
+<textarea id="t_${s}" oninput="autoGrow(this); saveData()"></textarea>
 <input type="file" onchange="loadImg(event,'${s}')">
 </div><br>`;
 
