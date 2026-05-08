@@ -221,9 +221,11 @@ rows.innerHTML += `
                     img: document.getElementById("i_" + s).src || "" }; 
                 document.getElementById("s_" + s).innerText = data[s].text; });
                 await saveOnline(key(), data); console.log("Saved Online"); } 
-                async function loadClass() { c.innerText = classSel.value; d.innerText = date.value; renderSubjects(); 
+                async function loadClass() {
+                    c.innerText = classSel.value; d.innerText = date.value; renderSubjects(); 
                     let data = await loadOnline(key()); if (data) { subjects.forEach(s => { if (data[s]) { 
                         document.getElementById("t_" + s).value = data[s].text; document.getElementById("s_" + s).innerText = data[s].text; 
+                        autoGrow(document.getElementById("t_" + s));
                         document.getElementById("i_" + s).src = data[s].img; } }); } } 
                         function autoGrow(el) { el.style.height = "40px"; el.style.height = el.scrollHeight + "px"; } 
                         function loadImg(e, s) {
