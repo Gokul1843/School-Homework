@@ -174,9 +174,9 @@
                 <div><b>${s}</b>
                      <textarea id="t_${s}" oninput="autoGrow(this); saveData()">
                         </textarea> 
-                        <input type="file" onchange="loadImg(event,'$'{s}')"> </div><br>;                 
-                         rows.innerHTML +=                            
-                         <div class="row"> 
+                        <input type="file" onchange="loadImg(event,'${s}')"> </div><br>;                 
+                         rows.innerHTML += `                         
+                         <div class="row">`;
                             <div class="left">${s}</div> 
                          <div class="right"> <div id="s_${s}" class="hwtext"></div> 
                          <img id="i_${s}"> </div> 
