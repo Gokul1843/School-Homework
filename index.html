@@ -168,21 +168,42 @@
     const rows = document.getElementById("sheetRows"); 
     function saveSubjects() { localStorage.setItem("subjects", JSON.stringify(subjects)); } 
     function renderSubjects() {
-            inputs.innerHTML = ""; rows.innerHTML = ""; 
-            subjects.forEach(s => {
-                inputs.innerHTML += `
-                <div><b>${s}</b>
-                     <textarea id="t_${s}" oninput="autoGrow(this); saveData()">
-                        </textarea> 
-                        <input type="file" onchange="loadImg(event,'${s}')"> </div><br>;                 
-                         rows.innerHTML += `                         
-                         <div class="row">`;
-                            <div class="left">${s}</div> 
-                         <div class="right"> <div id="s_${s}" class="hwtext"></div> 
-                         <img id="i_${s}"> </div> 
-                         </div>`;
-            });
-        }
+
+inputs.innerHTML = "";
+rows.innerHTML = "";
+
+subjects.forEach(s => {
+
+inputs.innerHTML += `
+<div>
+<b>${s}</b>
+
+<textarea id="t_${s}" oninput="autoGrow(this); saveData()"></textarea>
+
+<input type="file" onchange="loadImg(event,'${s}')">
+
+</div><br>
+`;
+
+rows.innerHTML += `
+<div class="row">
+
+<div class="left">${s}</div>
+
+<div class="right">
+
+<div id="s_${s}" class="hwtext"></div>
+
+<img id="i_${s}">
+
+</div>
+
+</div>
+`;
+
+});
+
+}
         function addSubject() {
             let s = newSubject.value.trim().toUpperCase(); if (!s) 
             return alert("Enter subject"); if (subjects.includes(s)) 
