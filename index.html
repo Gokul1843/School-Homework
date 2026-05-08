@@ -177,9 +177,10 @@ subjects.forEach(s => {
 inputs.innerHTML += `
 <div>
 <b>${s}</b>
-
-<textarea id="t_${s}" oninput="autoGrow(this); saveData()"></textarea>
-
+<textarea id="t_${s}" 
+oninput="autoGrow(this)" 
+onkeyup="saveData()" 
+onchange="saveData()"></textarea>
 <input type="file" onchange="loadImg(event,'${s}')">
 
 </div><br>
@@ -220,6 +221,7 @@ rows.innerHTML += `
                     document.getElementById("t_" + s).value, 
                     img: document.getElementById("i_" + s).src || "" }; 
                 document.getElementById("s_" + s).innerText = data[s].text; });
+                localStorage.setItem(key(), JSON.stringify(data));
                 await saveOnline(key(), data); console.log("Saved Online"); } 
                 async function loadClass() {
 
@@ -229,7 +231,19 @@ rows.innerHTML += `
 
     renderSubjects();
 
-    let data = await loadOnline(key());
+let data = null;
+
+let offline = localStorage.getItem(key());
+
+if (offline) {
+
+    data = JSON.parse(offline);
+
+} else {
+
+    data = await loadOnline(key());
+
+}
 
     if (data) {
 
