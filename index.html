@@ -235,8 +235,7 @@ textarea{
             return "class_" + classSel.value + "_" + date.value;
         }
 
-        function saveData() {
-
+        async function saveData() {
             let data = {};
 
             subjects.forEach(s => {
@@ -252,8 +251,7 @@ textarea{
                 document.getElementById("s_" + s).innerText = data[s].text;
 
             });
-
-            saveOnline(key(), data);
+await saveOnline(key(), data);
             console.log("Saved Online");
         }
 
