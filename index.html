@@ -310,20 +310,14 @@ rows.innerHTML += `
             }
             return null;
         }
-        window.onload = () => {
-            renderSubjects();
-            loadClass();
-        } ;  
-    </script>
+window.onload = async () => {
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(() => console.log('PWA Ready'));
-            });
-        }
-    </script>
+    renderSubjects();
+
+    await loadClass();
+
+};
+      </script>
 </body>
 
 </html>
