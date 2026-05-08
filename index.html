@@ -310,13 +310,14 @@ rows.innerHTML += `
             }
             return null;
         }
-window.onload = async () => {
+            
+   window.addEventListener("DOMContentLoaded", async () => {
 
     renderSubjects();
 
     await loadClass();
 
-};
+});
       </script>
 </body>
 
