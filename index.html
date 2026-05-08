@@ -377,8 +377,17 @@ alert("Sharing not supported on this device");
 
         window.saveOnline = async function (dataKey, data) {
 
-            await set(ref(db, "homework/" + dataKey), data);
+            try {
 
+await set(ref(db, "homework/" + dataKey), data);
+
+console.log("Firebase Saved");
+
+} catch(err){
+
+console.log(err);
+
+}
         }
 
         window.loadOnline = async function (dataKey) {
