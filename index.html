@@ -328,13 +328,21 @@ const firebaseConfig = {
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         window.saveOnline = async function (dataKey, data) {
-            try {
-                await set(ref(db, "homework/" + dataKey), data);
-                console.log("Firebase Saved");
-            }
-            catch (err) {
-                console.log(err);
-                alert(err);
+
+    try {
+
+        await set(ref(db, "homework/" + dataKey), data);
+
+        console.log("Firebase Saved");
+
+        alert("Saved");
+
+    } catch (err) {
+
+        console.log(err);
+
+        alert(err);
+
 
             }
         }
