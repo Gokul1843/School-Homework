@@ -247,9 +247,12 @@ renderSubjects();
 loadClass();}
         
         function key() { 
-                return "class_" + classSel.value + "_" + date.value; 
-            }
+               function key() { 
+    return "class_" + classSel.value + "_" + date.value.replaceAll("/", "-"); 
+}
              async function saveData() { let data = {}; 
+             document.getElementById("s_" + s).innerText = data[s].text;
+document.getElementById("d").innerText = date.value;
                 subjects.forEach(s => { data[s] = { text: 
                     document.getElementById("t_" + s).value, 
                     img: document.getElementById("i_" + s).src || "" }; 
