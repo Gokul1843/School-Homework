@@ -345,7 +345,14 @@ const firebaseConfig = {
             return null;
         }
             
-   window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("DOMContentLoaded", async () => {
+
+    let t = new Date();
+
+    date.value =
+        t.getDate().toString().padStart(2, '0') + "/" +
+        (t.getMonth() + 1).toString().padStart(2, '0') + "/" +
+        t.getFullYear();
 
     renderSubjects();
 
