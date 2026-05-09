@@ -155,7 +155,11 @@ Saved Successfully ✅
                 <option>VIII</option>
                 <option>IX</option>
                 <option>X</option>
-            </select> </div> <br> Date: <input id="date" onchange="loadClass()"><br><br> <b>Subjects (Add / Delete)</b><br> <input
+            </select> </div> <br> 
+        
+        <input id="date" readonly>
+        <br><br>
+        <b>Subjects (Add / Delete)</b><br> <input
             id="newSubject" placeholder="Enter subject name"> <button onclick="addSubject()">Add Subject</button>
         <button onclick="deleteSubject()">Delete Subject</button> <br><br>
         <div id="inputs"></div> <button onclick="download()">Download Sheet</button> <button
@@ -217,8 +221,10 @@ rows.innerHTML += `
 
 }
         function addSubject() {
-            let s = newSubject.value.trim().toUpperCase(); if (!s) 
-            return alert("Enter subject"); if (subjects.includes(s)) 
+            let s = newSubject.value.trim().toUpperCase();
+            if (!s) 
+            return alert("Enter subject");
+            if (subjects.includes(s)) 
             return 
             alert("Already exists"); 
             subjects.push(s);
