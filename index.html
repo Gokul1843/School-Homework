@@ -246,20 +246,34 @@ renderSubjects();
 
 loadClass();}
         
-        function key() { 
+       
                function key() { 
     return "class_" + classSel.value + "_" + date.value.replaceAll("/", "-"); 
 }
-             async function saveData() { let data = {}; 
-             document.getElementById("s_" + s).innerText = data[s].text;
-document.getElementById("d").innerText = date.value;
-                subjects.forEach(s => { data[s] = { text: 
-                    document.getElementById("t_" + s).value, 
-                    img: document.getElementById("i_" + s).src || "" }; 
-                document.getElementById("s_" + s).innerText = data[s].text; });
-                localStorage.setItem(key(), JSON.stringify(data));
-                await saveOnline(key(), data); console.log("Saved Online"); } 
-                async function loadClass() {
+             async function saveData() {
+
+    let data = {};
+
+    document.getElementById("d").innerText = date.value;
+
+    subjects.forEach(s => {
+
+        data[s] = {
+            text: document.getElementById("t_" + s).value,
+            img: document.getElementById("i_" + s).src || ""
+        };
+
+        document.getElementById("s_" + s).innerText = data[s].text;
+
+    });
+
+    localStorage.setItem(key(), JSON.stringify(data));
+
+    await saveOnline(key(), data);
+
+    console.log("Saved Online");
+}
+        async function loadClass() {
 
     c.innerText = classSel.value;
 
@@ -373,7 +387,8 @@ setTimeout(() => {
 
             }
         }
-        window.loadOnline = async function (dataKey) {
+        window.loadOnline = 
+            async function (dataKey) {
             const snapshot = await get(child(ref(db), "homework/" + dataKey));
             if (snapshot.exists()) {
                 return snapshot.val();
