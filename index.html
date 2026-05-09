@@ -126,7 +126,19 @@
     </style>
 </head>
 
-<body>
+<body><div id="msg" style="
+position:fixed;
+top:20px;
+right:20px;
+background:#2a7bff;
+color:white;
+padding:10px 20px;
+border-radius:8px;
+display:none;
+z-index:9999;
+">
+Saved Successfully ✅
+</div>
     <div class="container">
         <h2><b>Homework Entry</b></h2>
         <div class="class"> Class: <select id="classSel" onchange="loadClass()">
@@ -219,7 +231,8 @@ loadClass();
 
 newSubject.value = "";
             
-        } function deleteSubject() { let s = newSubject.value.trim().toUpperCase(); if (!subjects.includes(s)) 
+        } function deleteSubject() { let s = newSubject.value.trim().toUpperCase(); 
+                                    if (!subjects.includes(s)) 
             return alert("Subject not found"); subjects = subjects.filter(x => x !== s); 
             saveSubjects();
 
@@ -336,7 +349,12 @@ const firebaseConfig = {
         console.log("Firebase Saved");
 
         alert("Saved");
+let m = document.getElementById("msg");
+m.style.display = "block";
 
+setTimeout(() => {
+    m.style.display = "none";
+}, 2000);
     } catch (err) {
 
         console.log(err);
