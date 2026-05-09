@@ -225,8 +225,7 @@ rows.innerHTML += `
             if (!s) 
             return alert("Enter subject");
             if (subjects.includes(s)) 
-            return 
-            alert("Already exists"); 
+            return alert("Already exists"); 
             subjects.push(s);
 
 saveSubjects();
@@ -280,18 +279,15 @@ loadClass();}
     d.innerText = date.value;
 
     renderSubjects();
+let data = await loadOnline(key());
 
-let data = null;
+if (!data) {
 
-let offline = localStorage.getItem(key());
+    let offline = localStorage.getItem(key());
 
-if (offline) {
-
-    data = JSON.parse(offline);
-
-} else {
-
-    data = await loadOnline(key());
+    if (offline) {
+        data = JSON.parse(offline);
+    }
 
 }
 
