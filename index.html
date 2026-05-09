@@ -179,9 +179,7 @@ inputs.innerHTML += `
 <div>
 <b>${s}</b>
 <textarea id="t_${s}" 
-oninput="autoGrow(this)" 
-onkeyup="saveData()" 
-onchange="saveData()"></textarea>
+oninput="autoGrow(this); saveData()"></textarea>
 <input type="file" onchange="loadImg(event,'${s}')">
 
 </div><br>
