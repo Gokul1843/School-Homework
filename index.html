@@ -12,6 +12,8 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <style>
 
+/* ===== BODY ===== */
+
 body{
     font-family:Arial,sans-serif;
     background:#f2f2f2;
@@ -29,6 +31,8 @@ h2{
     font-size:28px;
     margin-bottom:15px;
 }
+
+/* ===== FORM ===== */
 
 .class select{
     width:45%;
@@ -69,12 +73,13 @@ button{
     font-size:15px;
     border-radius:5px;
     cursor:pointer;
-    transition:0.2s;
 }
 
 button:hover{
     opacity:0.9;
 }
+
+/* ===== SHEET ===== */
 
 #sheet{
     background:#fff;
@@ -93,7 +98,6 @@ button:hover{
     border-bottom:2px solid #000;
     line-height:35px;
     text-transform:uppercase;
-    letter-spacing:1px;
 }
 
 .classline{
@@ -111,54 +115,51 @@ button:hover{
 }
 
 .dateLeft{
-    width:28%;
-    padding:8px;
+    width:22%;
+    padding:6px;
     border-right:1px solid #000;
     font-weight:bold;
 }
 
 .dateRight{
-    width:72%;
-    padding:8px;
+    width:78%;
+    padding:6px;
     font-weight:bold;
 }
+
+/* ===== TABLE ===== */
 
 #homeworkTable{
     width:100%;
     border-collapse:collapse;
     table-layout:fixed;
-    background:#fff;
 }
 
 #homeworkTable th,
 #homeworkTable td{
     border:1px solid #000;
-    padding:4px !important;
+    padding:4px;
     vertical-align:top;
     word-break:break-word;
     line-height:1.2;
 }
 
 #homeworkTable th{
+    background:#f5f5f5;
     font-size:18px;
     text-align:left;
-    background:#f5f5f5;
-}
-
-#homeworkTable tr:nth-child(even){
-    background:#fafafa;
 }
 
 .subjectCol{
-    width:28%;
+    width:22%;
     font-weight:bold;
-    font-size:16px;
+    font-size:15px;
     text-transform:uppercase;
 }
 
 .homeworkCol{
-    width:72%;
-    font-size:16px;
+    width:78%;
+    font-size:15px;
 }
 
 .hwtext{
@@ -173,13 +174,7 @@ img{
     border-radius:4px;
 }
 
-textarea:focus,
-input:focus,
-select:focus{
-    outline:none;
-    border-color:#0044ff;
-    box-shadow:0 0 5px rgba(0,68,255,0.3);
-}
+/* ===== SAVE MESSAGE ===== */
 
 #msg{
     position:fixed;
@@ -191,46 +186,39 @@ select:focus{
     border-radius:8px;
     display:none;
     z-index:9999;
-    font-size:14px;
 }
 
-/* MOBILE DESIGN */
+/* ===== MOBILE ===== */
 
 @media(max-width:600px){
 
     body{
-        padding:5px;
-        font-size:12px;
+        padding:4px;
     }
 
     h2{
-        font-size:22px;
-    }
-
-    .container{
-        width:100%;
+        font-size:18px;
     }
 
     .class select{
         width:100%;
-        font-size:13px;
+        font-size:12px;
     }
 
-    input{
+    input,
+    textarea{
         width:100%;
-        font-size:13px;
+        font-size:12px;
     }
 
     textarea{
-        width:100%;
-        font-size:13px;
-        min-height:45px;
-        padding:8px;
+        min-height:40px;
+        padding:6px;
     }
 
     button{
-        font-size:13px;
-        padding:8px;
+        font-size:12px;
+        padding:7px;
     }
 
     #sheet{
@@ -238,42 +226,44 @@ select:focus{
     }
 
     .top{
-        font-size:13px;
-        padding:8px;
-        line-height:20px;
+        font-size:11px;
+        padding:6px;
+        line-height:16px;
     }
 
     .classline{
-        font-size:12px;
-        padding:6px;
-    }
-
-    .dateLeft,
-    .dateRight{
         font-size:10px;
         padding:4px;
     }
 
-    #homeworkTable th{
-        font-size:10px;
-        padding:3px !important;
+    .dateLeft,
+    .dateRight{
+        font-size:8px;
+        padding:3px;
     }
 
+    #homeworkTable th,
     #homeworkTable td{
-        padding:3px !important;
+        padding:2px !important;
+        line-height:1 !important;
+    }
+
+    #homeworkTable th{
+        font-size:8px;
     }
 
     .subjectCol{
-        width:26%;
-        font-size:9px;
-        padding:3px !important;
+        width:20% !important;
+        font-size:7px !important;
     }
 
     .homeworkCol{
-        width:74%;
-        font-size:9px;
-        padding:3px !important;
-        line-height:1.2;
+        width:80% !important;
+        font-size:7px !important;
+    }
+
+    img{
+        max-width:35px;
     }
 
 }
