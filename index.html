@@ -12,8 +12,6 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <style>
 
-/* ===== BODY ===== */
-
 body{
     font-family:Arial,sans-serif;
     background:#f2f2f2;
@@ -31,8 +29,6 @@ h2{
     font-size:28px;
     margin-bottom:15px;
 }
-
-/* ===== FORM ===== */
 
 .class select{
     width:45%;
@@ -79,8 +75,6 @@ button:hover{
     opacity:0.9;
 }
 
-/* ===== SHEET ===== */
-
 #sheet{
     background:#fff;
     border:2px solid #000;
@@ -115,14 +109,14 @@ button:hover{
 }
 
 .dateLeft{
-    width:22%;
+    width:28%;
     padding:6px;
     border-right:1px solid #000;
     font-weight:bold;
 }
 
 .dateRight{
-    width:78%;
+    width:72%;
     padding:6px;
     font-weight:bold;
 }
@@ -138,10 +132,9 @@ button:hover{
 #homeworkTable th,
 #homeworkTable td{
     border:1px solid #000;
-    padding:4px;
+    padding:6px;
     vertical-align:top;
     word-break:break-word;
-    line-height:1.2;
 }
 
 #homeworkTable th{
@@ -151,14 +144,14 @@ button:hover{
 }
 
 .subjectCol{
-    width:22%;
+    width:28%;
     font-weight:bold;
     font-size:15px;
     text-transform:uppercase;
 }
 
 .homeworkCol{
-    width:78%;
+    width:72%;
     font-size:15px;
 }
 
@@ -174,96 +167,87 @@ img{
     border-radius:4px;
 }
 
-/* ===== SAVE MESSAGE ===== */
-
-#msg{
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:#2a7bff;
-    color:#fff;
-    padding:10px 20px;
-    border-radius:8px;
-    display:none;
-    z-index:9999;
-}
-
 /* ===== MOBILE ===== */
 
 @media(max-width:600px){
 
     body{
-        padding:4px;
+        padding:5px;
     }
 
     h2{
-        font-size:18px;
+        font-size:20px;
     }
 
     .class select{
         width:100%;
-        font-size:12px;
+        font-size:13px;
     }
 
     input,
     textarea{
         width:100%;
-        font-size:12px;
+        font-size:13px;
     }
 
     textarea{
-        min-height:40px;
-        padding:6px;
-    }
-
-    button{
-        font-size:12px;
+        min-height:45px;
         padding:7px;
     }
 
+    button{
+        font-size:13px;
+        padding:8px;
+    }
+
     #sheet{
-        border-width:1px;
+        width:100%;
+        overflow:hidden;
     }
 
     .top{
-        font-size:11px;
-        padding:6px;
-        line-height:16px;
+        font-size:14px;
+        line-height:18px;
+        padding:8px;
     }
 
     .classline{
-        font-size:10px;
-        padding:4px;
+        font-size:12px;
+        padding:6px;
     }
 
     .dateLeft,
     .dateRight{
-        font-size:8px;
-        padding:3px;
+        font-size:10px;
+        padding:4px;
+    }
+
+    #homeworkTable{
+        width:100%;
     }
 
     #homeworkTable th,
     #homeworkTable td{
-        padding:2px !important;
-        line-height:1 !important;
+        padding:4px !important;
+        line-height:1.2;
     }
 
     #homeworkTable th{
-        font-size:8px;
+        font-size:11px !important;
     }
 
     .subjectCol{
-        width:20% !important;
-        font-size:7px !important;
+        width:30% !important;
+        font-size:10px !important;
     }
 
     .homeworkCol{
-        width:80% !important;
-        font-size:7px !important;
+        width:70% !important;
+        font-size:10px !important;
     }
 
     img{
-        max-width:35px;
+        max-width:45px;
     }
 
 }
