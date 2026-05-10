@@ -112,7 +112,44 @@
             margin-top: 3px;
         }
 
-    
+
+
+        #homeworkTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background: white;
+}
+
+#homeworkTable th,
+#homeworkTable td {
+    border: 1px solid #000;
+    padding: 10px;
+    vertical-align: top;
+    word-wrap: break-word;
+}
+
+.subjectCol {
+    width: 30%;
+    font-weight: bold;
+}
+
+.homeworkCol {
+    width: 70%;
+}
+
+@media(max-width:600px){
+
+    .subjectCol{
+        width:35%;
+        font-size:15px;
+    }
+
+    .homeworkCol{
+        width:65%;
+        font-size:14px;
+    }
+}
     </style>
 </head>
 
@@ -161,11 +198,14 @@ Saved Successfully ✅
                 <div class="left">Date</div>
                 <div class="right1" id="d"></div>
             </div>
-            <div class="row">
-                <div class="left">SUBJECT</div>
-                <div class="right1">HOMEWORK</div>
-            </div>
-            <div id="sheetRows"></div>
+           <table id="homeworkTable">
+    <tr>
+        <th style="width:30%">SUBJECT</th>
+        <th>HOMEWORK</th>
+    </tr>
+
+    <tbody id="sheetRows"></tbody>
+</table>
         </div>
     </div>
 
@@ -198,19 +238,14 @@ oninput="autoGrow(this); saveData()"></textarea>
 `;
 
 rows.innerHTML += `
-<div class="row">
+<tr>
+    <td class="subjectCol">${s}</td>
 
-<div class="left">${s}</div>
-
-<div class="right">
-
-<div id="s_${safe}" class="hwtext"></div>
-
-<img id="i_${safe}">
-
-</div>
-
-</div>
+    <td class="homeworkCol">
+        <div id="s_${safe}" class="hwtext"></div>
+        <img id="i_${safe}">
+    </td>
+</tr>
 `;
 
 });
