@@ -10,7 +10,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <link rel="apple-touch-icon" href="icon-192.png">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-    <style>
+<style>
+
 body{
     font-family:Arial,sans-serif;
     background:#f2f2f2;
@@ -82,6 +83,7 @@ button{
     font-size:26px;
     padding:15px;
     border-bottom:2px solid #000;
+    line-height:35px;
 }
 
 .classline{
@@ -96,6 +98,7 @@ button{
     width:100%;
     border-collapse:collapse;
     table-layout:fixed;
+    background:#fff;
 }
 
 #homeworkTable th,
@@ -122,14 +125,15 @@ button{
     font-size:18px;
 }
 
-img{
-    max-width:100%;
-    margin-top:5px;
-    border-radius:4px;
-}
-
 .hwtext{
     white-space:pre-wrap;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin-top:5px;
 }
 
 #msg{
@@ -148,6 +152,35 @@ img{
 
 @media(max-width:600px){
 
+    body{
+        padding:5px;
+        font-size:12px;
+    }
+
+    h2{
+        font-size:22px;
+    }
+
+    .top{
+        font-size:14px;
+        padding:10px;
+        line-height:20px;
+    }
+
+    .classline{
+        font-size:13px;
+        padding:8px;
+    }
+
+    #homeworkTable th{
+        font-size:11px;
+        padding:6px;
+    }
+
+    #homeworkTable td{
+        padding:5px;
+    }
+
     .subjectCol{
         width:32%;
         font-size:10px;
@@ -160,21 +193,22 @@ img{
         padding:5px !important;
     }
 
-    #homeworkTable th{
-        font-size:11px;
-        padding:6px;
+    textarea{
+        font-size:13px;
     }
 
-    .top{
-        font-size:14px;
-        line-height:20px;
+    button{
+        font-size:13px;
+        padding:8px;
     }
 
-    .classline{
+    input,
+    select{
         font-size:13px;
     }
 
 }
+
 </style>
 </head>
 
