@@ -14,13 +14,13 @@
 
 body{
     font-family:Arial,sans-serif;
-    background:#f2f2f2;
-    margin:0;
-    padding:7px;
+    background:#ffffff;
+    margin:10px;
+    padding:5px;
 }
 
 .container{
-    max-width:1000px;
+    max-width:9998px;
     margin:auto;
 }
 
@@ -77,10 +77,10 @@ button:hover{
 
 #sheet{
     background:#fff;
-    border:1px solid #000;
+    border:2px solid #000;
     margin-top:15px;
     overflow:hidden;
-    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    box-shadow:0 0 1px rgba(0,0,0,0.15);
 }
 
 .top{
@@ -89,7 +89,7 @@ button:hover{
     font-weight:bold;
     font-size:26px;
     padding:15px;
-    border-bottom:1px solid #000;
+    border-bottom:2px solid #000;
     line-height:35px;
     text-transform:uppercase;
 }
@@ -105,13 +105,22 @@ button:hover{
 
 .dateRow{
     display:flex;
-    border-bottom:2px solid #000;
+    border-bottom:5px solid #000;
+   
 }
-
+.left{
+font-size:20px;
+padding: 4px;
+}
+.right1{
+   font-size:20px;
+   padding: 4px;
+}
+   
 .dateLeft{
     width:5%;
     padding:2px;
-    border-right:1px solid #000;
+    border-right:2px solid #000;
     font-weight:bold;
 }
 
@@ -122,7 +131,6 @@ button:hover{
 }
 
 /* ===== TABLE ===== */
-
 #homeworkTable{
     width:100%;
     border-collapse:collapse;
@@ -132,7 +140,6 @@ button:hover{
 #homeworkTable th,
 #homeworkTable td{
     border:1px solid #000;
-  
     vertical-align:top;
     word-break:break-word;
       padding: 1px 1px 1px 5px;
@@ -147,8 +154,8 @@ button:hover{
 
 .subjectCol{
     width:8%;
-    font-weight:bold;
-    font-size:18px;
+   
+    font-size:20px;
     text-transform:uppercase;
     
 }
@@ -157,7 +164,7 @@ button:hover{
 }
 .homeworkCol{
     width:7%;
-    font-size:15px;
+    font-size:20px;
 }
 
 .hwtext{
@@ -169,7 +176,7 @@ img{
     height:auto;
     display:block;
     margin-top:3px;
-    border-radius:4px;
+    border-radius:5px;
 }
 
 /* ===== MOBILE ===== */
@@ -215,33 +222,32 @@ img{
         line-height:18px;
         padding:7px;
     }
-
+.left{
+padding: 4px;
+font-size: 14px;
+}
+.right1{
+   
+   padding: 4px;
+}
     .classline{
         font-size:14px;
-        padding:3px;
-        margin-bottom:4px;
+        padding:4px;
     }
-
-    .dateLeft,
-    .dateRight{
-        font-size:7px;
-        padding:3px;
-           margin-bottom:4px;
-    }
-
+ 
     #homeworkTable{
         width:100%;
     }
 
     #homeworkTable th,
     #homeworkTable td{
-        padding: 2px 2px 2px 1.7px;
+        padding: 1px 1px 1px 1.5px;
         line-height:1.5;
     }
 
     #homeworkTable th{
         font-size:14px !important;
-           margin-bottom:4px;
+        padding: 3px;
     }
 
     .subjectCol{
@@ -264,6 +270,7 @@ img{
         max-width:30px;
     }
 
+}
 </style>
 </head>
 
