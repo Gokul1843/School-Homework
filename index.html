@@ -13,9 +13,11 @@
     <style>
      <style>
 
+<style>
+
 body{
-    font-family:'Segoe UI',Tahoma;
-    background:#f0f0f0;
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
     margin:0;
     padding:10px;
 }
@@ -27,175 +29,177 @@ body{
 
 h2{
     text-align:center;
+    font-size:28px;
+    margin-bottom:15px;
 }
 
 .class select{
-    width:40%;
-    padding:7px;
+    width:45%;
+    padding:8px;
+    font-size:16px;
 }
 
 input{
-    width:70%;
-    padding:4px;
+    width:95%;
+    padding:8px;
     margin:5px 0;
+    border:1px solid #999;
+    border-radius:4px;
+    box-sizing:border-box;
 }
 
 textarea{
     width:95%;
     padding:10px;
     margin:5px 0;
-    height:50px;
-    min-height:50px;
-    font-size:16px;
+    min-height:55px;
+    font-size:15px;
     border:2px solid #2a7bff;
-    border-radius:8px;
+    border-radius:6px;
     resize:none;
     overflow:hidden;
     box-sizing:border-box;
 }
 
 button{
-    padding:8px;
     width:100%;
-    background:#2a7bff;
-    color:#fff;
-    border:none;
+    padding:10px;
     margin-top:5px;
-    border-radius:6px;
-    font-size:14px;
-}
-
-.row{
-    display:flex;
-    border-bottom:1px solid #040842;
-}
-
-.left{
-    width:20%;
-    border-right:1px solid #0e004e;
-    padding:6px;
-    font-weight:bold;
-}
-
-.right{
-    width:70%;
-    padding:6px;
-}
-
-.hwtext{
-    white-space:pre-wrap;
-}
-
-.right1{
-    width:70%;
-    padding:6px;
-    font-weight:bold;
+    border:none;
+    background:#2a7bff;
+    color:white;
+    font-size:15px;
+    border-radius:5px;
 }
 
 #sheet{
     background:#fff;
-    border:2px solid #8c00ff;
-    margin-top:10px;
+    border:2px solid #000;
+    margin-top:15px;
     overflow-x:auto;
 }
 
 .top{
-    background:rgb(111,252,30);
+    background:#a8f52d;
     text-align:center;
     font-weight:bold;
-    padding:8px;
-    border-bottom:2px solid #131755;
-    font-size:18px;
+    font-size:26px;
+    padding:15px;
+    border-bottom:2px solid #000;
 }
 
 .classline{
     text-align:center;
-    font-weight:bolder;
+    font-weight:bold;
+    font-size:22px;
+    padding:10px;
     border-bottom:2px solid #000;
-    padding:5px;
-    font-size:16px;
-}
-
-img{
-    max-width:90%;
-    margin-top:3px;
 }
 
 #homeworkTable{
     width:100%;
     border-collapse:collapse;
     table-layout:fixed;
-    background:white;
 }
 
 #homeworkTable th,
 #homeworkTable td{
     border:1px solid #000;
-    padding:10px;
+    padding:12px;
     vertical-align:top;
-    word-wrap:break-word;
+    word-break:break-word;
+}
+
+#homeworkTable th{
+    font-size:20px;
+    text-align:left;
 }
 
 .subjectCol{
     width:30%;
     font-weight:bold;
+    font-size:18px;
 }
 
 .homeworkCol{
     width:70%;
+    font-size:18px;
 }
+
+img{
+    max-width:100%;
+    margin-top:5px;
+    border-radius:4px;
+}
+
+.hwtext{
+    white-space:pre-wrap;
+}
+
+#msg{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#2a7bff;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:8px;
+    display:none;
+    z-index:9999;
+}
+
+/* MOBILE DESIGN */
 
 @media(max-width:600px){
 
     body{
-        font-size:13px;
         padding:5px;
     }
 
-    .container{
-        padding:0;
+    h2{
+        font-size:22px;
     }
 
-    h2{
-        font-size:20px;
+    .top{
+        font-size:15px;
+        padding:10px;
+    }
+
+    .classline{
+        font-size:14px;
+        padding:8px;
+    }
+
+    #homeworkTable th{
+        font-size:13px;
+        padding:7px;
+    }
+
+    #homeworkTable td{
+        padding:7px;
+    }
+
+    .subjectCol{
+        width:38%;
+        font-size:11px;
+    }
+
+    .homeworkCol{
+        width:62%;
+        font-size:11px;
+    }
+
+    textarea{
+        font-size:13px;
     }
 
     button{
         font-size:13px;
-        padding:6px;
-    }
-
-    input,
-    textarea,
-    select{
-        font-size:13px;
-    }
-
-    textarea{
-        width:92%;
         padding:8px;
     }
 
-    #homeworkTable th,
-    #homeworkTable td{
-        padding:6px;
-    }
-
-    .subjectCol{
-        width:35%;
-        font-size:12px;
-    }
-
-    .homeworkCol{
-        width:65%;
-        font-size:12px;
-    }
-
-    .top{
-        font-size:14px;
-    }
-
-    .classline{
+    input,
+    select{
         font-size:13px;
     }
 
