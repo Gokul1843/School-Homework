@@ -109,20 +109,57 @@
             margin-top: 3px;
         }
 
-        @media(max-width:600px) {
-            .left {
-                width: 40%;
-            }
+      @media(max-width:600px) {
 
-            .right,
-            .right1 {
-                width: 60%;
-            }
+    body{
+        padding:5px;
+    }
 
-            input {
-                width: 100%;
-            }
-        }
+    .container{
+        max-width:100%;
+    }
+
+    #sheet{
+        overflow-x:auto;
+    }
+
+    .left{
+        width:35%;
+        font-size:14px;
+        padding:5px;
+    }
+
+    .right,
+    .right1{
+        width:65%;
+        font-size:14px;
+        padding:5px;
+    }
+
+    .top{
+        font-size:18px;
+    }
+
+    .classline{
+        font-size:16px;
+    }
+
+    input,
+    textarea,
+    button,
+    select{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    textarea{
+        min-height:60px;
+    }
+
+    img{
+        max-width:100%;
+    }
+}
     </style>
 </head>
 
