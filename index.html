@@ -11,137 +11,149 @@
     <link rel="apple-touch-icon" href="icon-192.png">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma;
-            background: #f0f0f0;
-            margin: 0;
-            padding: 10px;
-        }
+     <style>
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-        }
+body{
+    font-family:'Segoe UI',Tahoma;
+    background:#f0f0f0;
+    margin:0;
+    padding:10px;
+}
 
-        h2 {
-            text-align: center;
-        }
+.container{
+    max-width:1000px;
+    margin:auto;
+}
 
-        .class select {
-            width: 40%;
-            padding: 7px;
-        }
+h2{
+    text-align:center;
+}
 
-        input {
-            width: 70%;
-            padding: 4px;
-            margin: 5px 0;
-        }
+.class select{
+    width:40%;
+    padding:7px;
+}
 
-  textarea {
-    width: 95%;
-    padding: 10px;
-    margin: 5px 0;
+input{
+    width:70%;
+    padding:4px;
+    margin:5px 0;
+}
+
+textarea{
+    width:95%;
+    padding:10px;
+    margin:5px 0;
     height:50px;
     min-height:50px;
-    font-size: 16px;
-    border: 2px solid #2a7bff;
-    border-radius: 8px;
-    resize: none;
-    overflow: hidden;
+    font-size:16px;
+    border:2px solid #2a7bff;
+    border-radius:8px;
+    resize:none;
+    overflow:hidden;
+    box-sizing:border-box;
 }
-        button {
-            padding: 8px;
-            width: 100%;
-            background: #2a7bff;
-            color: rgb(255, 255, 255);
-            border: none;
-            margin-top: 5px;
-        }
 
-        .row {
-            display: flex;
-            border-bottom: 1px solid #040842;
-        }
+button{
+    padding:8px;
+    width:100%;
+    background:#2a7bff;
+    color:#fff;
+    border:none;
+    margin-top:5px;
+    border-radius:6px;
+    font-size:14px;
+}
 
-        .left {
-            width: 20%;
-            border-right: 1px solid #0e004e;
-            padding: 6px;
-            font-weight: bold;
-        }
+.row{
+    display:flex;
+    border-bottom:1px solid #040842;
+}
 
-        .right {
-            width: 70%;
-            padding: 6px;
-        }
+.left{
+    width:20%;
+    border-right:1px solid #0e004e;
+    padding:6px;
+    font-weight:bold;
+}
 
-        .hwtext {
-            white-space: pre-wrap;
-        }
+.right{
+    width:70%;
+    padding:6px;
+}
 
-        .right1 {
-            width: 70%;
-            padding: 6px;
-            font-weight: bold;
-        }
+.hwtext{
+    white-space:pre-wrap;
+}
 
-        #sheet {
-            background: #ffffff;
-            border: 2px solid #8c00ff;
-            margin-top: 10px;
-        }
+.right1{
+    width:70%;
+    padding:6px;
+    font-weight:bold;
+}
 
-        .top {
-            background: rgb(111, 252, 30);
-            text-align: center;
-            font-weight: bold;
-            padding: 8px;
-            border-bottom: 2px solid #131755;
-        }
+#sheet{
+    background:#fff;
+    border:2px solid #8c00ff;
+    margin-top:10px;
+    overflow-x:auto;
+}
 
-        .classline {
-            
-            font-weight: bolder;
-            border-bottom: 2px solid #000;
-            padding: 5px;
-        }
+.top{
+    background:rgb(111,252,30);
+    text-align:center;
+    font-weight:bold;
+    padding:8px;
+    border-bottom:2px solid #131755;
+    font-size:18px;
+}
 
-        img {
-            max-width: 90%;
-            margin-top: 3px;
-        }
+.classline{
+    text-align:center;
+    font-weight:bolder;
+    border-bottom:2px solid #000;
+    padding:5px;
+    font-size:16px;
+}
 
+img{
+    max-width:90%;
+    margin-top:3px;
+}
 
-
-        #homeworkTable {
-    width: 90%;
-    border-collapse: collapse;
-    table-layout: 5;
-    background: white;
+#homeworkTable{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    background:white;
 }
 
 #homeworkTable th,
-#homeworkTable td {
-    border: 1px solid #000;
-    padding: 10px;
-    vertical-align: top;
-    word-wrap: break-word;
+#homeworkTable td{
+    border:1px solid #000;
+    padding:10px;
+    vertical-align:top;
+    word-wrap:break-word;
 }
 
-.subjectCol {
-    width: 30%;
-    font-weight: bold;
+.subjectCol{
+    width:30%;
+    font-weight:bold;
 }
 
-.homeworkCol {
-    width: 70%;
+.homeworkCol{
+    width:70%;
 }
 
 @media(max-width:600px){
 
     body{
         font-size:13px;
+        padding:5px;
+    }
+
+    .container{
+        padding:0;
     }
 
     h2{
@@ -157,6 +169,16 @@
     textarea,
     select{
         font-size:13px;
+    }
+
+    textarea{
+        width:92%;
+        padding:8px;
+    }
+
+    #homeworkTable th,
+    #homeworkTable td{
+        padding:6px;
     }
 
     .subjectCol{
@@ -178,7 +200,8 @@
     }
 
 }
-    </style>
+
+</style>
 </head>
 
 <body><div id="msg" style="
