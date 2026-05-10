@@ -62,17 +62,17 @@ textarea{
 button{
     width:100%;
     padding:10px;
-    margin-top:5px;
+    margin-top:4px;
     border:none;
     background:#2a7bff;
     color:white;
     font-size:15px;
-    border-radius:5px;
+    border-radius:7px;
     cursor:pointer;
 }
 
 button:hover{
-    opacity:0.9;
+    opacity:1;
 }
 
 #sheet{
@@ -97,7 +97,7 @@ button:hover{
 .classline{
     text-align:center;
     font-weight:bold;
-    font-size:22px;
+    font-size:24px;
     padding:7px;
     border-bottom:2px solid #000;
     background:#f8f8f8;
@@ -105,7 +105,7 @@ button:hover{
 
 .dateRow{
     display:flex;
-    border-bottom:1px solid #000;
+    border-bottom:5px solid #000;
 }
 
 .dateLeft{
@@ -132,9 +132,11 @@ button:hover{
 #homeworkTable th,
 #homeworkTable td{
     border:1px solid #000;
-    padding:8px;
+  
     vertical-align:top;
     word-break:break-word;
+      padding: 1px 1px 1px 5px;
+        line-height:1.5;
 }
 
 #homeworkTable th{
@@ -144,12 +146,15 @@ button:hover{
 }
 
 .subjectCol{
-    width:28%;
+    width:8%;
     font-weight:bold;
-    font-size:15px;
+    font-size:18px;
     text-transform:uppercase;
+    
 }
-
+.w{
+    width: 18%;
+}
 .homeworkCol{
     width:7%;
     font-size:15px;
@@ -246,6 +251,10 @@ img{
         width:100% !important;
         font-size:12px !important;
     }
+
+    .w{
+        width:27%;
+    }
 .right1{
      font-size:14px !important;
 }
@@ -310,7 +319,7 @@ Saved Successfully ✅
             </div>
            <table id="homeworkTable">
  <tr>
-        <th style="width: 27%;">SUBJECT</th>
+        <th class="w">SUBJECT</th>
         <th>HOMEWORK</th>
     </tr>
 
