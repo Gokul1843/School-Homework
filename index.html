@@ -513,7 +513,13 @@ function startVoice(id) {
     recognition.lang = "en-IN";
 
     recognition.start();
+     recognition.onstart = function () {
+    console.log("Voice started");
+};
 
+recognition.onerror = function (event) {
+    alert("Mic Error: " + event.error);
+};
     recognition.onresult = function(event) {
 
         let text = event.results[0][0].transcript;
