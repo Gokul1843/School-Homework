@@ -446,42 +446,39 @@ if (!data) {
 }
 
     if (data) {
-
-
-subjects.forEach(s => {
-
-    let safe = s.replace(/\s+/g, "_");
-
-    document.getElementById("t_" + safe).value = "";
-
-    document.getElementById("s_" + safe).innerText = "";
-
-    document.getElementById("i_" + safe).src = "";
-
-});
-
 if (data) {
-   
+
     subjects.forEach(s => {
 
-    let safe = s.replace(/\s+/g, "_");
+        let safe = s.replace(/\s+/g, "_");
 
-    if (data[s]) {
+        document.getElementById("t_" + safe).value = "";
 
-        document.getElementById("t_" + safe).value = data[s].text;
+        document.getElementById("s_" + safe).innerText = "";
 
-        autoGrow(document.getElementById("t_" + safe));
+        document.getElementById("i_" + safe).src = "";
 
-        document.getElementById("s_" + safe).innerText = data[s].text;
+    });
 
-        document.getElementById("i_" + safe).src = data[s].img;
+    subjects.forEach(s => {
 
-    }
+        let safe = s.replace(/\s+/g, "_");
 
-});
+        if (data[s]) {
 
-    }
-    }
+            document.getElementById("t_" + safe).value = data[s].text;
+
+            autoGrow(document.getElementById("t_" + safe));
+
+            document.getElementById("s_" + safe).innerText = data[s].text;
+
+            document.getElementById("i_" + safe).src = data[s].img;
+
+        }
+
+    });
+
+}
 
                       function autoGrow(el) {
 
