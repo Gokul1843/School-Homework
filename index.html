@@ -436,6 +436,8 @@ loadClass();
     if (rows.innerHTML === "") {
     renderSubjects();
 }
+let data = await loadOnline(key());
+
 listenOnline(key());
 
 if (!data) {
