@@ -633,6 +633,13 @@ const firebaseConfig = {
 
         console.log("Firebase Saved");
 
+if (Notification.permission === "granted") {
+
+    new Notification("📚 Homework Updated", {
+        body: "Class " + classSel.value + " homework saved successfully"
+    });
+
+}
         
 let m = document.getElementById("msg");
 m.style.display = "block";
@@ -693,7 +700,11 @@ setTimeout(() => {
 }
             
 window.addEventListener("DOMContentLoaded", async () => {
+if (Notification.permission !== "granted") {
 
+    Notification.requestPermission();
+
+}
     let t = new Date();
 
     date.value =
