@@ -447,7 +447,22 @@ if (!data) {
 
     if (data) {
 
-       subjects.forEach(s => {
+
+subjects.forEach(s => {
+
+    let safe = s.replace(/\s+/g, "_");
+
+    document.getElementById("t_" + safe).value = "";
+
+    document.getElementById("s_" + safe).innerText = "";
+
+    document.getElementById("i_" + safe).src = "";
+
+});
+
+if (data) {
+   
+    subjects.forEach(s => {
 
     let safe = s.replace(/\s+/g, "_");
 
@@ -467,8 +482,7 @@ if (!data) {
 
     }
 
-}
-                       function autoGrow(el) {
+                      function autoGrow(el) {
 
     if (el.value.trim() === "") {
         el.style.height = "50px";
