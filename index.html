@@ -436,6 +436,17 @@ loadClass();
     if (rows.innerHTML === "") {
     renderSubjects();
 }
+    subjects.forEach(s => {
+
+    let safe = s.replace(/\s+/g, "_");
+
+    document.getElementById("t_" + safe).value = "";
+
+    document.getElementById("s_" + safe).innerText = "";
+
+    document.getElementById("i_" + safe).src = "";
+
+}); 
 let data = await loadOnline(key());
 
 listenOnline(key());
