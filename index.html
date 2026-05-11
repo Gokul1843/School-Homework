@@ -313,8 +313,8 @@ Saved Successfully ✅
         
            <table class="row">
  <tr>
-          <tr><th <div class="left">Date-</div></th>
-        <th> <div class="right1" id="d"></div></th>
+          <tr><th class="left">Date-</th>
+        <th class="right1" id="d"></th>
     </tr>
 </table>
             </div>
@@ -436,7 +436,7 @@ loadClass();
     if (rows.innerHTML === "") {
     renderSubjects();
 }
-let data = await loadOnline(key());
+listenOnline(key());
 
 if (!data) {
 
@@ -510,7 +510,8 @@ String(t.getMonth() + 1).padStart(2, '0') + "/" + t.getFullYear();
             ref,
             set,
             get,
-            child
+            child, 
+            onValue
         }
             from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
         // Import the functions you need from the SDKs you need
@@ -559,6 +560,37 @@ setTimeout(() => {
             }
             return null;
         }
+        window.listenOnline = function (dataKey) {
+
+    onValue(ref(db, "homework/" + dataKey), (snapshot) => {
+
+        if (snapshot.exists()) {
+
+            let data = snapshot.val();
+
+            subjects.forEach(s => {
+
+                let safe = s.replace(/\s+/g, "_");
+
+                if (data[s]) {
+
+                    document.getElementById("t_" + safe).value = data[s].text;
+
+                    document.getElementById("s_" + safe).innerText = data[s].text;
+
+                    document.getElementById("i_" + safe).src = data[s].img;
+
+                    autoGrow(document.getElementById("t_" + safe));
+
+                }
+
+            });
+
+        }
+
+    });
+
+}
             
 window.addEventListener("DOMContentLoaded", async () => {
 
