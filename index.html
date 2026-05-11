@@ -516,7 +516,7 @@ function autoGrow(el) {
     }
 
 }
-function startVoice(id, btnId) {
+function startVoice(id) {
 
     const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -530,41 +530,37 @@ function startVoice(id, btnId) {
 
     recognition.lang = "en-IN";
 
-    recognition.continuous = true;
+    const btn = event.target;
 
-    recognition.interimResults = false;
+    btn.classList.add("listening");
 
-    let btn = document.getElementById(btnId);
+    btn.innerHTML = "🎙 Listening...";
 
     recognition.start();
 
-    recognition.onstart = function () {
-
-        btn.classList.add("listening");
-
-        btn.innerHTML = "🔴 Listening...";
-    };
-
     recognition.onresult = function(event) {
 
-        let text =
-        event.results[event.results.length - 1][0].transcript;
+        let text = event.results[0][0].transcript;
 
         let box = document.getElementById(id);
 
-        box.value += text + " ";
+        box.value += " " + text;
 
         autoGrow(box);
 
         saveData();
+
     };
 
-    recognition.onend = function () {
+    recognition.onend = function() {
 
         btn.classList.remove("listening");
 
         btn.innerHTML = "🎤 Voice Typing";
+
     };
+
+}
 
     recognition.onerror = function(event) {
 
