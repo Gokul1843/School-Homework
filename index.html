@@ -74,6 +74,22 @@ button{
 button:hover{
     opacity:1;
 }
+    .listening{
+    background:red !important;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
 
 #sheet{
     background:#fff;
@@ -351,8 +367,10 @@ inputs.innerHTML += `
 
 <textarea id="t_${safe}" 
 oninput="autoGrow(this); saveData()"></textarea>
-
-<button type="button" onclick="startVoice('t_${safe}')">
+<button 
+type="button"
+id="voiceBtn_${safe}"
+onclick="startVoice('t_${safe}','voiceBtn_${safe}')">
 🎤 Voice Typing
 </button>
 
@@ -498,7 +516,7 @@ function autoGrow(el) {
     }
 
 }
-function startVoice(id) {
+function startVoice(id, btnId) {
 
     const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -512,17 +530,25 @@ function startVoice(id) {
 
     recognition.lang = "en-IN";
 
-    recognition.start();
-     recognition.onstart = function () {
-    console.log("Voice started");
-};
+    recognition.continuous = true;
 
-recognition.onerror = function (event) {
-    alert("Mic Error: " + event.error);
-};
+    recognition.interimResults = false;
+
+    let btn = document.getElementById(btnId);
+
+    recognition.start();
+
+    recognition.onstart = function () {
+
+        btn.classList.add("listening");
+
+        btn.innerHTML = "🔴 Listening...";
+    };
+
     recognition.onresult = function(event) {
 
-        let text = event.results[0][0].transcript;
+        let text =
+        event.results[event.results.length - 1][0].transcript;
 
         let box = document.getElementById(id);
 
@@ -531,6 +557,22 @@ recognition.onerror = function (event) {
         autoGrow(box);
 
         saveData();
+    };
+
+    recognition.onend = function () {
+
+        btn.classList.remove("listening");
+
+        btn.innerHTML = "🎤 Voice Typing";
+    };
+
+    recognition.onerror = function(event) {
+
+        btn.classList.remove("listening");
+
+        btn.innerHTML = "🎤 Voice Typing";
+
+        alert("Mic Error: " + event.error);
     };
 
 }
