@@ -438,7 +438,9 @@ loadClass();
 }
 let data = await loadOnline(key());
 
-listenOnline(key());
+if (!unsubscribe) {
+    listenOnline(key());
+}
 
 if (!data) {
 
