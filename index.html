@@ -352,6 +352,10 @@ inputs.innerHTML += `
 <textarea id="t_${safe}" 
 oninput="autoGrow(this); saveData()"></textarea>
 
+<button type="button" onclick="startVoice('t_${safe}')">
+🎤 Voice Typing
+</button>
+
 <input type="file" onchange="loadImg(event,'${safe}')">
 
 </div><br>
@@ -494,6 +498,37 @@ function autoGrow(el) {
     }
 
 }
+function startVoice(id) {
+
+    const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        alert("Voice typing not supported");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-IN";
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+
+        let text = event.results[0][0].transcript;
+
+        let box = document.getElementById(id);
+
+        box.value += text;
+
+        autoGrow(box);
+
+        saveData();
+    };
+
+}
+        
                         function loadImg(e, s) {
             let r = new FileReader(); r.onload = () => 
             {
