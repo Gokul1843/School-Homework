@@ -564,8 +564,11 @@ setTimeout(() => {
         }
         window.listenOnline = function (dataKey) {
 
-    onValue(ref(db, "homework/" + dataKey), (snapshot) => {
+    if (unsubscribe) {
+        unsubscribe();
+    }
 
+    unsubscribe = onValue(ref(db, "homework/" + dataKey), (snapshot) => {
         if (snapshot.exists()) {
 
             let data = snapshot.val();
