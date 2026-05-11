@@ -726,8 +726,29 @@ if (Notification.permission !== "granted") {
 
 });
       </script>
+    <script>
+function touchNotification() {
 
+    if (Notification.permission === "granted") {
 
+        navigator.serviceWorker.ready.then(function(registration) {
+
+            registration.showNotification("👆 Button Pressed", {
+
+                body: "You touched the button",
+
+                icon: "icon-192.png",
+
+                badge: "icon-192.png"
+
+            });
+
+        });
+
+    }
+
+}
+    </script>
     <script>
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
