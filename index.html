@@ -516,21 +516,24 @@ function autoGrow(el) {
     }
 
 }
-function startVoice(id) {
+function startVoice(id, btnId) {
 
     const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
+
         alert("Voice typing not supported");
+
         return;
+
     }
 
     const recognition = new SpeechRecognition();
 
     recognition.lang = "en-IN";
 
-    const btn = event.target;
+    const btn = document.getElementById(btnId);
 
     btn.classList.add("listening");
 
@@ -560,8 +563,6 @@ function startVoice(id) {
 
     };
 
-}
-
     recognition.onerror = function(event) {
 
         btn.classList.remove("listening");
@@ -569,6 +570,7 @@ function startVoice(id) {
         btn.innerHTML = "🎤 Voice Typing";
 
         alert("Mic Error: " + event.error);
+
     };
 
 }
