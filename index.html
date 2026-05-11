@@ -387,7 +387,9 @@ loadClass();
 
 newSubject.value = "";
             
-        } function deleteSubject() { let s = newSubject.value.trim().toUpperCase(); 
+        } 
+        
+        function deleteSubject() { let s = newSubject.value.trim().toUpperCase(); 
                                     if (!subjects.includes(s)) 
             return alert("Subject not found"); subjects = subjects.filter(x => x !== s); 
             saveSubjects();
@@ -395,10 +397,9 @@ newSubject.value = "";
 renderSubjects();
 
 loadClass();
-                                    
-                                  
         
-       
+                                 }
+        
                function key() { 
     return "class_" + classSel.value + "_" + date.value.replaceAll("/", "-"); 
 }
