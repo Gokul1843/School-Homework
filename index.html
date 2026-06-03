@@ -631,13 +631,22 @@ import {
         
     const db = getDatabase(app);
         let unsubscribe = null;
-        window.saveOnline = async function (dataKey, data) {
+        window.saveOnline = async function(dataKey, data) {
+
+    alert("saveOnline called");
 
     try {
-
         await set(ref(db, "homework/" + dataKey), data);
 
-        console.log("Firebase Saved");
+        alert("Firebase Saved");
+
+    } catch (err) {
+
+        alert("Firebase Error: " + err.message);
+        console.error(err);
+
+    }
+}
         
 let m = document.getElementById("msg");
 m.style.display = "block";
