@@ -429,12 +429,10 @@ loadClass();
     return "class_" + classSel.value + "_" + date.value.replaceAll("/", "-"); 
 }
              async function saveData() {
-alert("saveData running");
-    alert("saveData started");
 
+    alert("saveData running");
     alert(typeof saveOnline);
 
-}
     let data = {};
 
     document.getElementById("d").innerText = date.value;
@@ -452,17 +450,18 @@ alert("saveData running");
 
     });
 
-    
-
     localStorage.setItem(key(), JSON.stringify(data));
 
-try {
+    try {
 
-    await saveOnline(key(), data);
-    alert("Firebase Save Success");
-} catch(err) {
-    alert("Firebase Error: " + err.message);
-}
+        await saveOnline(key(), data);
+        alert("Firebase Save Success");
+
+    } catch(err) {
+
+        alert("Firebase Error: " + err.message);
+
+    }
 
 }
         async function loadClass() {
