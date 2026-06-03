@@ -637,10 +637,15 @@ alert("Firebase module loaded");
         
     const db = getDatabase(app);
         let unsubscribe = null;
-        window.saveOnline = async function(dataKey, data) {
+        window.addEventListener("DOMContentLoaded", async () => {
 
-    alert("saveOnline called");
+    alert("saveOnline = " + typeof window.saveOnline);
 
+    renderSubjects();
+
+    await loadClass();
+
+});
     try {
 
         await set(ref(db, "homework/" + dataKey), data);
