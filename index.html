@@ -676,22 +676,7 @@ alert("Firebase module loaded");
     await loadClass();
 
 });
-        alert("Firebase Saved");
-
-        let m = document.getElementById("msg");
-        m.style.display = "block";
-
-        setTimeout(() => {
-            m.style.display = "none";
-        }, 2000);
-
-    } catch (err) {
-
-        alert("Firebase Error: " + err.message);
-        console.error(err);
-
-    }
-}
+        
         
         window.loadOnline = 
             async function (dataKey) {
