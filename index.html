@@ -642,7 +642,32 @@ alert("Firebase module loaded");
         
     const db = getDatabase(app);
         let unsubscribe = null;
-        window.addEventListener("DOMContentLoaded", async () => {
+        window.saveOnline = async function(dataKey, data) {
+
+    alert("saveOnline called");
+
+    try {
+
+        await set(ref(db, "homework/" + dataKey), data);
+
+        alert("Firebase Saved");
+
+        let m = document.getElementById("msg");
+        m.style.display = "block";
+
+        setTimeout(() => {
+            m.style.display = "none";
+        }, 2000);
+
+    } catch(err) {
+
+        alert("Firebase Error: " + err.message);
+        console.error(err);
+
+    }
+
+}
+            window.addEventListener("DOMContentLoaded", async () => {
 
     alert("saveOnline = " + typeof window.saveOnline);
 
@@ -651,10 +676,6 @@ alert("Firebase module loaded");
     await loadClass();
 
 });
-    try {
-
-        await set(ref(db, "homework/" + dataKey), data);
-
         alert("Firebase Saved");
 
         let m = document.getElementById("msg");
