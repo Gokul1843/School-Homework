@@ -606,7 +606,7 @@ String(t.getDate()).padStart(2, '0') + "/" +
 String(t.getMonth() + 1).padStart(2, '0') + "/" + t.getFullYear();
     </script>
     <script type="module">
-    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import {
     getDatabase,
     ref,
@@ -655,21 +655,6 @@ import {
     }
 }
         
-let m = document.getElementById("msg");
-m.style.display = "block";
-
-setTimeout(() => {
-    m.style.display = "none";
-}, 2000);
-    } catch (err) {
-
-        console.log(err);
-
-        alert(err);
-
-
-            }
-        }
         window.loadOnline = 
             async function (dataKey) {
             const snapshot = await get(child(ref(db), "homework/" + dataKey));
