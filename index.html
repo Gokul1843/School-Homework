@@ -485,10 +485,15 @@ loadClass();
     document.getElementById("i_" + safe).src = "";
 
 }); 
-let data = await loadOnline(key());
+let data = null;
 
-listenOnline(key());
+if(typeof loadOnline === "function"){
+    data = await loadOnline(key());
+}
 
+if(typeof listenOnline === "function"){
+    listenOnline(key());
+}
 if (!data) {
 
     let offline = localStorage.getItem(key());
