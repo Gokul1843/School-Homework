@@ -633,10 +633,8 @@ String(t.getMonth() + 1).padStart(2, '0') + "/" + t.getFullYear();
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-</script>
- <script>
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
+        
+    const db = getDatabase(app);
         let unsubscribe = null;
         window.saveOnline = async function (dataKey, data) {
 
