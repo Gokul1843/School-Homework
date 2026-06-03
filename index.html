@@ -447,9 +447,16 @@ alert("Save function running");
 
     });
 
+    (data));
+
     localStorage.setItem(key(), JSON.stringify(data));
 
+try {
     await saveOnline(key(), data);
+    alert("Firebase Save Success");
+} catch(err) {
+    alert("Firebase Error: " + err.message);
+}
 
 }
         async function loadClass() {
