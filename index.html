@@ -453,15 +453,17 @@ loadClass();
 
     try {
 
-        await saveOnline(key(), data);
-        alert("Firebase Save Success");
+    alert("Before saveOnline");
 
-    } catch(err) {
+    await saveOnline(key(), data);
 
-        alert("Firebase Error: " + err.message);
+    alert("Firebase Save Success");
+
+} catch(err) {
+
+    alert("Firebase Error: " + err.message);
 
     }
-
 }
         async function loadClass() {
 
