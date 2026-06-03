@@ -452,6 +452,7 @@ alert("saveData running");
     localStorage.setItem(key(), JSON.stringify(data));
 
 try {
+  alert(typeof saveOnline);  
     await saveOnline(key(), data);
     alert("Firebase Save Success");
 } catch(err) {
@@ -606,6 +607,7 @@ String(t.getDate()).padStart(2, '0') + "/" +
 String(t.getMonth() + 1).padStart(2, '0') + "/" + t.getFullYear();
     </script>
     <script type="module">
+        alert("Firebase module loaded");
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import {
     getDatabase,
