@@ -430,6 +430,11 @@ loadClass();
 }
              async function saveData() {
 alert("saveData running");
+    alert("saveData started");
+
+    alert(typeof saveOnline);
+
+}
     let data = {};
 
     document.getElementById("d").innerText = date.value;
@@ -452,7 +457,7 @@ alert("saveData running");
     localStorage.setItem(key(), JSON.stringify(data));
 
 try {
-  alert(typeof saveOnline);  
+
     await saveOnline(key(), data);
     alert("Firebase Save Success");
 } catch(err) {
