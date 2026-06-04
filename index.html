@@ -651,19 +651,18 @@ window.saveOnline = async function(dataKey, data) {
 
     try {
 
-        alert("save start");
+        alert("Saving Path = homework/" + dataKey);
 
         await set(
             ref(db, "homework/" + dataKey),
             data
         );
 
-        alert("save complete");
+        alert("Saved OK");
 
     } catch(err) {
 
-        alert(err.message);
-        console.error(err);
+        alert("SAVE ERROR = " + err.message);
 
     }
 }
