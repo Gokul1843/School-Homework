@@ -649,20 +649,24 @@ let unsubscribe = null;
 
 window.saveOnline = async function(dataKey, data) {
 
-    alert("saveOnline called");
+    try {
 
-    await set(
-        ref(db, "homework/" + dataKey),
-        data
-    );
+        alert("save start");
 
-    let m = document.getElementById("msg");
-    m.style.display = "block";
+        await set(
+            ref(db, "homework/" + dataKey),
+            data
+        );
 
-    setTimeout(() => {
-        m.style.display = "none";
-    }, 2000);
-};
+        alert("save complete");
+
+    } catch(err) {
+
+        alert(err.message);
+        console.error(err);
+
+    }
+}
 
 window.loadOnline = async function(dataKey) {
 
