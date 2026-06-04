@@ -677,69 +677,113 @@ alert("Firebase module loaded");
 
 });
         
-        
-        window.loadOnline = 
-            async function (dataKey) {
-            const snapshot = await get(child(ref(db), "homework/" + dataKey));
-            if (snapshot.exists()) {
-                return snapshot.val();
-            }
-            return null;
-        }
-        window.listenOnline = function (dataKey) {
+<script type="module">
 
-    if (unsubscribe) {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  child,
+  onValue
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBa5yGYP46YyEfRv_I7_Ot1WBABDMF-qvs",
+  authDomain: "homework-12913.firebaseapp.com",
+  databaseURL: "https://homework-12913-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "homework-12913",
+  storageBucket: "homework-12913.firebasestorage.app",
+  messagingSenderId: "580315928567",
+  appId: "1:580315928567:web:2bd7144ad8f4724874c0f2"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+alert("Firebase module loaded");
+
+let unsubscribe = null;
+
+window.saveOnline = async function(dataKey, data) {
+
+    alert("saveOnline called");
+
+    await set(
+        ref(db, "homework/" + dataKey),
+        data
+    );
+
+    let m = document.getElementById("msg");
+    m.style.display = "block";
+
+    setTimeout(() => {
+        m.style.display = "none";
+    }, 2000);
+};
+
+window.loadOnline = async function(dataKey) {
+
+    const snapshot =
+        await get(child(ref(db), "homework/" + dataKey));
+
+    if(snapshot.exists()){
+        return snapshot.val();
+    }
+
+    return null;
+};
+
+window.listenOnline = function(dataKey) {
+
+    if(unsubscribe){
         unsubscribe();
     }
 
-    unsubscribe = onValue(ref(db, "homework/" + dataKey), (snapshot) => {
-        if (snapshot.exists()) {
+    unsubscribe = onValue(
+        ref(db, "homework/" + dataKey),
+        (snapshot) => {
 
-            let data = snapshot.val();
+            if(!snapshot.exists()) return;
+
+            const data = snapshot.val();
 
             subjects.forEach(s => {
 
                 let safe = s.replace(/\s+/g, "_");
 
-                if (data[s]) {
+                if(data[s]){
 
-                    document.getElementById("t_" + safe).value = data[s].text;
+                    document.getElementById("t_" + safe).value =
+                        data[s].text || "";
 
-                    document.getElementById("s_" + safe).innerText = data[s].text;
+                    document.getElementById("s_" + safe).innerText =
+                        data[s].text || "";
 
-                    document.getElementById("i_" + safe).src = data[s].img;
-
-                    autoGrow(document.getElementById("t_" + safe));
+                    document.getElementById("i_" + safe).src =
+                        data[s].img || "";
 
                 }
-
             });
-
         }
+    );
+};
 
-    });
-
-}
-            
 window.addEventListener("DOMContentLoaded", async () => {
-if (Notification.permission !== "granted") {
 
-    Notification.requestPermission();
-
-}
-    let t = new Date();
-
-    date.value =
-        t.getDate().toString().padStart(2, '0') + "/" +
-        (t.getMonth() + 1).toString().padStart(2, '0') + "/" +
-        t.getFullYear();
+    if(Notification.permission !== "granted"){
+        Notification.requestPermission();
+    }
 
     renderSubjects();
 
     await loadClass();
 
 });
-      </script>
+
+</script>
+    
     <script>
 function touchNotification() {
 
