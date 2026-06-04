@@ -498,6 +498,7 @@ if (!data) {
 
     let offline = localStorage.getItem(key());
 alert("LocalStorage = " + localStorage.getItem(key()));
+    alert("Saved Local = " + localStorage.getItem(key()));
     if (offline) {
         data = JSON.parse(offline);
     }
