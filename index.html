@@ -626,29 +626,30 @@ const firebaseConfig = {
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         let unsubscribe = null;
-        window.saveOnline = async function (dataKey, data) {
+        window.saveOnline = async function(dataKey, data) {
 
     try {
 
         await set(ref(db, "homework/" + dataKey), data);
 
         console.log("Firebase Saved");
-        
-let m = document.getElementById("msg");
-m.style.display = "block";
 
-setTimeout(() => {
-    m.style.display = "none";
-}, 2000);
+        let m = document.getElementById("msg");
+        m.style.display = "block";
+
+        setTimeout(() => {
+            m.style.display = "none";
+        }, 2000);
+
     } catch (err) {
 
-        console.log(err);
+        console.error("Firebase Save Error:", err);
 
-        alert(err);
+        alert("Save Error: " + err.message);
 
+    }
 
-            }
-        }
+}
         window.loadOnline = 
             async function (dataKey) {
             const snapshot = await get(child(ref(db), "homework/" + dataKey));
