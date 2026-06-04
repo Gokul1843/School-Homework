@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>School Homework System</title>
@@ -429,9 +430,6 @@ loadClass();
 }
              async function saveData() {
 
-    alert("saveData running");
-    alert(typeof saveOnline);alert("Saving Key = " + key());
-
     let data = {};
 
     document.getElementById("d").innerText = date.value;
@@ -451,19 +449,8 @@ loadClass();
 
     localStorage.setItem(key(), JSON.stringify(data));
 
-    try {
-
-    alert("Before saveOnline");
-
     await saveOnline(key(), data);
 
-    alert("Firebase Save Success");
-
-} catch(err) {
-
-    alert("Firebase Error: " + err.message);
-
-    }
 }
         async function loadClass() {
 
@@ -485,20 +472,14 @@ loadClass();
     document.getElementById("i_" + safe).src = "";
 
 }); 
-let data = null;
+let data = await loadOnline(key());
 
-if(typeof loadOnline === "function"){
-    data = await loadOnline(key());
-}
+listenOnline(key());
 
-if(typeof listenOnline === "function"){
-    listenOnline(key());
-}
 if (!data) {
 
     let offline = localStorage.getItem(key());
-alert("LocalStorage = " + localStorage.getItem(key()));
-    alert("Saved Local = " + localStorage.getItem(key()));
+
     if (offline) {
         data = JSON.parse(offline);
     }
@@ -574,7 +555,9 @@ function startVoice(id, btnId) {
         autoGrow(box);
 
         saveData();
+
     };
+
     recognition.onend = function() {
 
         btn.classList.remove("listening");
@@ -617,19 +600,18 @@ function startVoice(id, btnId) {
 String(t.getDate()).padStart(2, '0') + "/" +
 String(t.getMonth() + 1).padStart(2, '0') + "/" + t.getFullYear();
     </script>
-
-        
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  set,
-  get,
-  child,
-  onValue
-} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import {
+            getDatabase,
+            ref,
+            set,
+            get,
+            child, 
+            onValue
+        }
+            from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+        // Import the functions you need from the SDKs you need
 
 const firebaseConfig = {
   apiKey: "AIzaSyBa5yGYP46YyEfRv_I7_Ot1WBABDMF-qvs",
@@ -641,98 +623,94 @@ const firebaseConfig = {
   appId: "1:580315928567:web:2bd7144ad8f4724874c0f2"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-alert("Firebase module loaded");
-
-let unsubscribe = null;
-
-window.saveOnline = async function(dataKey, data) {
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        let unsubscribe = null;
+        window.saveOnline = async function (dataKey, data) {
 
     try {
 
-        alert("Saving Path = homework/" + dataKey);
+        await set(ref(db, "homework/" + dataKey), data);
 
-        await set(
-            ref(db, "homework/" + dataKey),
-            data
-        );
+        console.log("Firebase Saved");
+        
+let m = document.getElementById("msg");
+m.style.display = "block";
 
-        alert("Saved OK");
+setTimeout(() => {
+    m.style.display = "none";
+}, 2000);
+    } catch (err) {
 
-    } catch(err) {
+        console.log(err);
 
-        alert("SAVE ERROR = " + err.message);
+        alert(err);
 
-    }
-}
 
-window.loadOnline = async function(dataKey){
+            }
+        }
+        window.loadOnline = 
+            async function (dataKey) {
+            const snapshot = await get(child(ref(db), "homework/" + dataKey));
+            if (snapshot.exists()) {
+                return snapshot.val();
+            }
+            return null;
+        }
+        window.listenOnline = function (dataKey) {
 
-    alert("Loading = " + dataKey);
-alert("Loading Key = " + dataKey);
-    const snapshot =
-        await get(child(ref(db), "homework/" + dataKey));
-
-    alert("Exists = " + snapshot.exists());
-
-    if(snapshot.exists()){
-        return snapshot.val();
-    }
-
-    return null;
-};
-
-window.listenOnline = function(dataKey) {
-
-    if(unsubscribe){
+    if (unsubscribe) {
         unsubscribe();
     }
 
-    unsubscribe = onValue(
-        ref(db, "homework/" + dataKey),
-        (snapshot) => {
+    unsubscribe = onValue(ref(db, "homework/" + dataKey), (snapshot) => {
+        if (snapshot.exists()) {
 
-            if(!snapshot.exists()) return;
-
-            const data = snapshot.val();
+            let data = snapshot.val();
 
             subjects.forEach(s => {
 
                 let safe = s.replace(/\s+/g, "_");
 
-                if(data[s]){
+                if (data[s]) {
 
-                    document.getElementById("t_" + safe).value =
-                        data[s].text || "";
+                    document.getElementById("t_" + safe).value = data[s].text;
 
-                    document.getElementById("s_" + safe).innerText =
-                        data[s].text || "";
+                    document.getElementById("s_" + safe).innerText = data[s].text;
 
-                    document.getElementById("i_" + safe).src =
-                        data[s].img || "";
+                    document.getElementById("i_" + safe).src = data[s].img;
+
+                    autoGrow(document.getElementById("t_" + safe));
 
                 }
+
             });
+
         }
-    );
-};
 
+    });
+
+}
+            
 window.addEventListener("DOMContentLoaded", async () => {
+if (Notification.permission !== "granted") {
 
-    if(Notification.permission !== "granted"){
-        Notification.requestPermission();
-    }
+    Notification.requestPermission();
+
+}
+    let t = new Date();
+
+    date.value =
+        t.getDate().toString().padStart(2, '0') + "/" +
+        (t.getMonth() + 1).toString().padStart(2, '0') + "/" +
+        t.getFullYear();
 
     renderSubjects();
 
     await loadClass();
 
 });
-
-</script>
-    
+      </script>
     <script>
 function touchNotification() {
 
