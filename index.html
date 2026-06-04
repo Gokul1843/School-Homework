@@ -430,7 +430,7 @@ loadClass();
              async function saveData() {
 
     alert("saveData running");
-    alert(typeof saveOnline);
+    alert(typeof saveOnline);alert("Saving Key = " + key());
 
     let data = {};
 
@@ -670,7 +670,7 @@ window.saveOnline = async function(dataKey, data) {
 window.loadOnline = async function(dataKey){
 
     alert("Loading = " + dataKey);
-
+alert("Loading Key = " + dataKey);
     const snapshot =
         await get(child(ref(db), "homework/" + dataKey));
 
