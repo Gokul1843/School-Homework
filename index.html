@@ -497,7 +497,7 @@ if(typeof listenOnline === "function"){
 if (!data) {
 
     let offline = localStorage.getItem(key());
-
+alert("LocalStorage = " + localStorage.getItem(key()));
     if (offline) {
         data = JSON.parse(offline);
     }
