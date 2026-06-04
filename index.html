@@ -668,10 +668,14 @@ window.saveOnline = async function(dataKey, data) {
     }
 }
 
-window.loadOnline = async function(dataKey) {
+window.loadOnline = async function(dataKey){
+
+    console.log("Loading:", dataKey);
 
     const snapshot =
         await get(child(ref(db), "homework/" + dataKey));
+
+    console.log(snapshot.val());
 
     if(snapshot.exists()){
         return snapshot.val();
